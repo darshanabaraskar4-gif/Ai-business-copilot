@@ -24,4 +24,6 @@ Upload PDF → AI summarizes & categorizes → n8n automation → Auto email rep
 [Video Demo Link] [Live Demo Link]
 
 ---
+
+https://darshana-hr-hub.lovable.app
 Built by: Darshan Baraskar
