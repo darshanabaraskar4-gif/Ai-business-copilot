@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darshana HR App</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+.container{max-width:600px;margin:auto;background:white;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+h1{color:#2563eb;text-align:center}
+input,button{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:5px;box-sizing:border-box;font-size:16px}
+button{background:#2563eb;color:white;border:none;cursor:pointer;font-weight:bold}
+button:hover{background:#1e40af}
+#result{margin-top:20px;padding:15px;background:#f0f9ff;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Darshana HR App</h1>
+<input type="text" id="name" placeholder="Employee Name">
+<input type="text" id="role" placeholder="Role / Position">
+<button onclick="addEmployee()">Add Employee</button>
+<div id="result"></div>
+</div>
+<script>
+const SUPABASE_URL='https://rqgdpwvelxhgozcnmila.supabase.co'
+const SUPABASE_KEY='sb_publishable_AIyOVV88fmXNzdWFImEwTg_5PhU-4wN'
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY)
+async function addEmployee(){
+const name=document.getElementById('name').value
+const role=document.getElementById('role').value
+if(!name||!role){alert('Name ani Role bhar');return;}
+const {error}=await supabase.from('employees').insert([{name,role}])
+document.getElementById('result').innerText=error?'❌ Error: '+error.message:'✅ Employee Added: '+name
+}
+</script></body></html>
